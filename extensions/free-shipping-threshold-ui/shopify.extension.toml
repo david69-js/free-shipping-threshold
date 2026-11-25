@@ -1,0 +1,24 @@
+api_version = "2026-01"
+
+[[extensions]]
+# Merchant-facing name lives in locales/en.default.json
+name = "t:name"
+description = "t:description"
+handle = "free-shipping-threshold-ui"
+uid = "f6df4554-4fb4-ba82-8ba1-3e78025a783d8190eb33"
+type = "ui_extension"
+
+# Only 1 target can be specified for each Admin block extension
+[[extensions.targeting]]
+module = "./src/DiscountFunctionSettings.jsx"
+target = "admin.discount-details.function-settings.render"
+
+# Makes these discount metafields available in `shopify.data.metafields`.
+# Must match the namespace/keys read by the function's input query.
+[[extensions.metafields]]
+namespace = "$app"
+key = "minimum_subtotal"
+
+[[extensions.metafields]]
+namespace = "$app"
+key = "shipping_discount_percentage"

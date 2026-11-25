@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "6fb39fb0c207f870d05f1b7874a2e725"
+name = "free-shipping-threshold"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2027-01"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_discounts,write_discounts"
+
+[auth]
+redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
+
+# Discount metafield definitions (created by Shopify on deploy/install; no GraphQL needed).
+# Written by the admin UI extension (free-shipping-threshold-ui) and read by the
+# function input query as metafield(namespace: "$app", key: "...").
+[discount.metafields.app.minimum_subtotal]
+type = "number_decimal"
+name = "Free shipping minimum subtotal"
+description = "Minimum cart subtotal BEFORE discounts to get the shipping discount"
+access.admin = "merchant_read_write"
+access.storefront = "none"
+
+[discount.metafields.app.shipping_discount_percentage]
+type = "number_decimal"
+name = "Shipping discount percentage"
+description = "Percentage off shipping once the minimum is reached (100 = free)"
+access.admin = "merchant_read_write"
+access.storefront = "none"

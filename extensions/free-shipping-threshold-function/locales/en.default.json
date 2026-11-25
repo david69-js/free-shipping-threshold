@@ -1,0 +1,4 @@
+{
+  "name": "Free Shipping Threshold",
+  "description": "Shipping discount when the cart reaches a minimum subtotal measured BEFORE product and order discounts"
+}

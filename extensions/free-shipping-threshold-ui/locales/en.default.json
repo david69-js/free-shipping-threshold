@@ -1,0 +1,17 @@
+{
+  "name": "Free Shipping Threshold settings",
+  "description": "Minimum subtotal (before discounts) and shipping discount percentage",
+  "title": "Free shipping threshold",
+  "loading": "Loading...",
+  "minimumSubtotal": {
+    "label": "Minimum subtotal",
+    "help": "Measured BEFORE product and order discounts. SavedBy and GWP gift lines do not count.",
+    "error": "Enter an amount greater than 0"
+  },
+  "shippingPercentage": {
+    "label": "Shipping discount",
+    "help": "100% = free shipping. Applies to every shipping option.",
+    "error": "Enter a value between 1 and 100"
+  },
+  "error": "Unable to save settings. Please try again."
+}

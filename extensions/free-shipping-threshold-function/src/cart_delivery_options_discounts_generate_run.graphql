@@ -1,0 +1,45 @@
+query DeliveryInput {
+  presentmentCurrencyRate
+  cart {
+    lines {
+      quantity
+      cost {
+        # Line cost BEFORE any discount (product, order). Order-level
+        # discounts never touch line cost, so summing this gives the
+        # pre-discount merchandise subtotal.
+        subtotalAmount {
+          amount
+        }
+      }
+      gwpGift: attribute(key: "_gwp_gift") {
+        value
+      }
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          product {
+            vendor
+          }
+        }
+      }
+    }
+    deliveryGroups {
+      id
+    }
+  }
+  discount {
+    discountClasses
+    minimumSubtotal: metafield(
+      namespace: "$app"
+      key: "minimum_subtotal"
+    ) {
+      value
+    }
+    shippingPercentage: metafield(
+      namespace: "$app"
+      key: "shipping_discount_percentage"
+    ) {
+      value
+    }
+  }
+}
